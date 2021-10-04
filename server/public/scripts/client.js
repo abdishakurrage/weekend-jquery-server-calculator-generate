@@ -53,18 +53,18 @@ function getMathData() {
         }).then((response) => {
         console.log('GET /calculate response', response);
         let calcList = $('#mathHistory');
-        let results = $('#results'); // results
+        let answer  = $('#answer '); // results
         calcList.empty();
-        results.empty();
+        answer .empty();
 
         for (let calc of response) { 
-            results.empty(); // results
+            answer .empty(); // results
             calcList.append(`
                 <li>
-                    ${calc.numberOne} ${calc.data} ${calc.numberTwo} = ${calc.results}
+                    ${calc.numberOne} ${calc.data} ${calc.numberTwo} = ${calc.answer }
                 </li>
             `);
-            results.append(calc.results); //
+            answer.append(calc.answer ); //
         }
     })
  }
@@ -77,5 +77,5 @@ function getMathData() {
 function clearInputs() {
     $('#numberOne').val('');
     $('#numberTwo').val('');
-    $('#numberOne')();
+    // $('#numberOne')();
 }

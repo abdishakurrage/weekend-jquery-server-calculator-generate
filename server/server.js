@@ -27,8 +27,8 @@ function doMath() {
 app.post('/calculate', (req,res) => {
     console.log('in post /calculate'); 
     let mathCalc = req.body; 
-    let results = doMath(mathCalc);
-    mathCalc.results = results; 
+    let answer  = doMath(mathCalc);
+    mathCalc.answer  = answer ; 
     console.log('req.body is ', mathCalc); 
     calculation.push(mathCalc); 
     res.send(200);
@@ -46,5 +46,5 @@ app.get('/calculate', (req,res) => {
 // listening for requests
 const port = 5000;
 app.listen(port, () => {
-    console.log('App is up and running!')
+    console.log('App is up and running');
 });
