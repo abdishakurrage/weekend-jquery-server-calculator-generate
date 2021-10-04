@@ -17,6 +17,8 @@ function doMath() {
         result = Number(numberOne) - Number(numberTwo);
     }else if (data === '*') {
         result = Number(numberOne) * Number(numberTwo);
+    }else if (data === '/') {
+        result = Number(numberOne) / Number(numberTwo);
     }
 
 
@@ -43,7 +45,5 @@ app.get('/calculate', (req,res) => {
 // listening for requests
 const port = 5000;
 app.listen(port, () => {
-    console.log('App is up and running!');
+    console.log('App is up and running!')
 });
-
-
