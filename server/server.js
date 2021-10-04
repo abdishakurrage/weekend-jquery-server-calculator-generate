@@ -8,6 +8,10 @@ app.use(express.static('./server/public'));
 
 app.use(express.urlencoded({extended: true}));
 
+// calculate for each operation 
+function doMath() {
+    let calculation = 0;
+
 
 
 app.post('/calculate', (req,res) => {
