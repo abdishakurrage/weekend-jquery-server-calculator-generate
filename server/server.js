@@ -3,7 +3,7 @@ const app = express();
 
 // app.use 
 app.use(express.static('./server/public'));
-// app.use(bodyParser.json());
+
 app.use(express.urlencoded({extended: true}));
 
 // listening for requests
