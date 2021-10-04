@@ -1,10 +1,26 @@
 const express = require('express');
 const app = express();
 
+const calculation = [];
+
 // app.use 
 app.use(express.static('./server/public'));
 
 app.use(express.urlencoded({extended: true}));
+
+
+
+app.post('/calculate', (req,res) => {
+    console.log('in post /calculate'); 
+    let mathCalc = req.body; 
+    let results = doMath(mathCalc);
+    mathCalc.results = results; 
+    console.log('req.body is ', mathCalc); 
+    calculation.push(mathCalc); 
+    res.send(200);
+
+}) // sends status
+
 
 
 app.get('/calculate', (req,res) => {
