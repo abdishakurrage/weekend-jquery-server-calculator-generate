@@ -44,7 +44,30 @@ function sendMath() {
     });
 }
 
+function getMathData() {
+    console.log('getMathData');
+    
+        $.ajax({
+            method: 'GET',
+            url: '/calculate'
+        }).then((response) => {
+        console.log('GET /calculate response', response);
+        let calcList = $('#mathHistory');
+        let results = $('#results'); // results
+        calcList.empty();
+        results.empty();
 
+        for (let calc of response) { 
+            results.empty(); // results
+            calcList.append(`
+                <li>
+                    ${calc.numberOne} ${calc.data} ${calc.numberTwo} = ${calc.results}
+                </li>
+            `);
+            results.append(calc.results); //
+        }
+    })
+ }
 
 
 
