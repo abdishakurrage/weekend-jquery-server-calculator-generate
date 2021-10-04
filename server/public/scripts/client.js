@@ -1,4 +1,4 @@
-$(document).ready(onReady);
+// $(document).ready(onReady);
 
 let operation; // history
 
