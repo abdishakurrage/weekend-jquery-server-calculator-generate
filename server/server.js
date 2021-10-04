@@ -19,7 +19,8 @@ function doMath() {
         result = Number(numberOne) * Number(numberTwo);
     }else if (data === '/') {
         result = Number(numberOne) / Number(numberTwo);
-    }
+    } return result;
+}
 
 
 
