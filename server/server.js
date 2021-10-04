@@ -10,7 +10,10 @@ app.use(express.urlencoded({extended: true}));
 
 // calculate for each operation 
 function doMath() {
-    let calculation = 0;
+    let result = 0;
+    if (data === '+') {
+        result = Number(numberOne) + Number(numberTwo);
+    }
 
 
 
