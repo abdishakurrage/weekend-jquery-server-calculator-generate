@@ -13,6 +13,8 @@ function doMath() {
     let result = 0;
     if (data === '+') {
         result = Number(numberOne) + Number(numberTwo);
+    }else if (object.data === '-') {
+        result = Number(object.numberOne) - Number(object.numberTwo);
     }
 
 
