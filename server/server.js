@@ -22,6 +22,9 @@ function doMath(object) {
     } return result;
 }
 
+
+// push math
+// post calculate
 app.post('/calculate', (req, res) => {
     console.log('post /calculate');
     let mathCalc = req.body;
@@ -41,5 +44,5 @@ app.get('/calculate', (req, res) => {
 // listening for requests
 const port = 5000;
 app.listen(port, () => {
-    console.log('App is up and running');
+    console.log('server is up & running');
 });
