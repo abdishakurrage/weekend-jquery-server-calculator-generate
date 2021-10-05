@@ -1,9 +1,11 @@
 
 $(document).ready(onReady);
-$(document).ready(getMathData());
+$().ready(getMathData());
 
-let operationVariable; // history
+let operation; // 
 
+// function on ready
+// get clicked
 function onReady() {
     console.log('on Ready');
     $('#submitBtn').on('click', sendMath);
@@ -11,25 +13,27 @@ function onReady() {
     $('#clearBtn').on('click', clearInputs);
 }
 
+// clear in put fields
+
 function clearInputs() {
     $('#numberOne').val('');
     $('#numberTwo').val('');
-    $('#numberOne').ready();
+
 }
 
 // get click operations
 function getClickedOperation() {
     if ($(this).is('#plusBtn')) {
-        operationVariable = '+';
+        operation = '+';
     }
     else if ($(this).is('#minusBtn')) {
-        operationVariable = '-';
+        operation = '-';
     }
     else if ($(this).is('#multiplyBtn')) {
-        operationVariable = '*';
+        operation = '*';
     }
     else if ($(this).is('#divideBtn')) {
-        operationVariable = '/';
+        operation = '/';
     }
 }
 
@@ -40,7 +44,7 @@ function sendMath() {
     let mathCalc = {
         numberOne: $('#numberOne').val(),
         numberTwo: $('#numberTwo').val(),
-        data: operationVariable
+        data: operation
     };
     $.ajax({
         method: 'POST',
@@ -87,6 +91,5 @@ function getMathData() {
 
 // function clearInputs() {
 //     $('#numberOne').val('');
-//     $('#numberTwo').val('');
-//     $('#numberOne')();
+//     $('#numberTwo').val('')
 // }
