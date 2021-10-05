@@ -1,6 +1,8 @@
-// $(document).ready(onReady);
 
-let operation; // history
+$(document).ready(onReady);
+$(document).ready(getMathData());
+
+let operationVariable; // history
 
 function onReady() {
     console.log('on Ready');
@@ -9,30 +11,36 @@ function onReady() {
     $('#clearBtn').on('click', clearInputs);
 }
 
+function clearInputs() {
+    $('#numberOne').val('');
+    $('#numberTwo').val('');
+    $('#numberOne').ready();
+}
+
 // get click operations
 function getClickedOperation() {
     if ($(this).is('#plusBtn')) {
-        operation = '+';
+        operationVariable = '+';
     }
     else if ($(this).is('#minusBtn')) {
-        operation = '-';
+        operationVariable = '-';
     }
     else if ($(this).is('#multiplyBtn')) {
-        operation = '*';
+        operationVariable = '*';
     }
     else if ($(this).is('#divideBtn')) {
-        operation = '/';
+        operationVariable = '/';
     }
 }
 
 // post function 
 function sendMath() {
-    console.log('sendMath');
+    console.log('inside sendMath');
 
     let mathCalc = {
         numberOne: $('#numberOne').val(),
         numberTwo: $('#numberTwo').val(),
-        data: operation
+        data: operationVariable
     };
     $.ajax({
         method: 'POST',
@@ -44,38 +52,41 @@ function sendMath() {
     });
 }
 
+
+// for loop
+// append items
 function getMathData() {
     console.log('getMathData');
-    
-        $.ajax({
-            method: 'GET',
-            url: '/calculate'
-        }).then((response) => {
+
+    $.ajax({
+        method: 'GET',
+        url: '/calculate'
+    }).then((response) => {
         console.log('GET /calculate response', response);
         let calcList = $('#mathHistory');
-        let answer  = $('#answer '); // results
+        let answer = $('#answer ');
         calcList.empty();
-        answer .empty();
+        answer.empty();
 
-        for (let calc of response) { 
-            answer .empty(); // results
+        for (let calc of response) {
+            answer.empty();
             calcList.append(`
                 <li>
-                    ${calc.numberOne} ${calc.data} ${calc.numberTwo} = ${calc.answer }
+                    ${calc.numberOne} ${calc.data} ${calc.numberTwo} = ${calc.answer}
                 </li>
             `);
-            answer.append(calc.answer ); //
+            answer.append(calc.answer);
         }
     })
- }
+}
 
 
 
 
 // clear in put fields
 
-function clearInputs() {
-    $('#numberOne').val('');
-    $('#numberTwo').val('');
-    // $('#numberOne')();
-}
+// function clearInputs() {
+//     $('#numberOne').val('');
+//     $('#numberTwo').val('');
+//     $('#numberOne')();
+// }
